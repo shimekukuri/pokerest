@@ -6,25 +6,33 @@ import Pokecard from "./componants/Pokecard";
 
 function App() {
   const [searchString, setSearchString] = useState(``);
+  const [searchResults, setSearchResults] = useState([])
 
   useEffect(() => {
+    if(searchString === "") {
+      return;
+    }
     const debounce = setTimeout(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${searchString}`)
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.error(error))
-    }, 1000)
-    return () => clearTimeout(debounce)
+      fetch(`https://pokeapi.co/api/v2/pokemon/${searchString}`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          setSearchResults([data]);
+        })
+        .catch((error) => console.error(error));
+    }, 1000);
+    console.log(searchResults);
+    return () => clearTimeout(debounce);
   }, [searchString]);
 
   const handleSearchString = (e) => {
     setSearchString(e.target.value);
     console.log(searchString);
-  }
+  };
 
   return (
     <>
-      <Search onSearch={handleSearchString}/>
+      <Search onSearch={handleSearchString} />
       <Pokecard />
     </>
   );
