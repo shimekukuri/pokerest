@@ -1,0 +1,7 @@
+input {
+  transition: transform .2s;
+}
+
+input:hover {
+  transform: scale(1.05);
+}
