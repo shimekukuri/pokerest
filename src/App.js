@@ -6,10 +6,10 @@ import Pokecard from "./componants/Pokecard";
 
 function App() {
   const [searchString, setSearchString] = useState(``);
-  const [searchResults, setSearchResults] = useState([])
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    if(searchString === "") {
+    if (searchString === "") {
       return;
     }
     const debounce = setTimeout(() => {

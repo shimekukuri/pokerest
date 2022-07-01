@@ -15,7 +15,8 @@ export default function Pokecard(props) {
           }}
         >
           <div
-            style={{ width: "25px", height: "25px", backgroundColor: "yellow" }}
+            id="pokediv"
+            style={{ width: "20%", backgroundColor: "yellow", padding: "5px", margin: "10px"}}
           ></div>
         </div>
       </div>
